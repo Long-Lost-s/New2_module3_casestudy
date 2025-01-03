@@ -10,8 +10,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TeacherDAO {
-    // Retrieve all teachers
+public class TeacherDAO implements ITeacherDAO {
+
+    @Override
     public List<Teacher> getAllTeachers() {
         List<Teacher> teachers = new ArrayList<>();
         String query = "SELECT * FROM teachers";
@@ -36,7 +37,7 @@ public class TeacherDAO {
         return teachers;
     }
 
-    // Find teacher by ID
+    @Override
     public Teacher getTeacherById(int teacherId) {
         String query = "SELECT * FROM teachers WHERE teacher_id = ?";
         try (Connection connection = DatabaseConnection.getConnection();
@@ -61,7 +62,7 @@ public class TeacherDAO {
         return null;
     }
 
-    // Add a new teacher
+    @Override
     public boolean addTeacher(Teacher teacher) {
         String query = "INSERT INTO teachers (full_name, email, phone_number, total_classes, total_students) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = DatabaseConnection.getConnection();
@@ -80,7 +81,7 @@ public class TeacherDAO {
         return false;
     }
 
-    // Update teacher
+    @Override
     public boolean updateTeacher(Teacher teacher) {
         String query = "UPDATE teachers SET full_name = ?, email = ?, phone_number = ?, total_classes = ?, total_students = ? WHERE teacher_id = ?";
         try (Connection connection = DatabaseConnection.getConnection();
@@ -100,7 +101,7 @@ public class TeacherDAO {
         return false;
     }
 
-    // Delete teacher
+    @Override
     public boolean deleteTeacher(int teacherId) {
         String query = "DELETE FROM teachers WHERE teacher_id = ?";
         try (Connection connection = DatabaseConnection.getConnection();

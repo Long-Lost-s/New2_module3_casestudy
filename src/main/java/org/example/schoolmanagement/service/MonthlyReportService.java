@@ -5,24 +5,24 @@ import org.example.schoolmanagement.model.MonthlyTeacherReport;
 
 import java.util.List;
 
-public class MonthlyReportService {
+public class MonthlyReportService implements IMonthlyReportService {
     private final MonthlyReportDAO monthlyReportDAO;
 
     public MonthlyReportService() {
         this.monthlyReportDAO = new MonthlyReportDAO();
     }
 
-    // Retrieve all reports
+    @Override
     public List<MonthlyTeacherReport> getAllReports() {
         return monthlyReportDAO.getAllReports();
     }
 
-    // Add a new report
+    @Override
     public boolean addReport(MonthlyTeacherReport report) {
         return monthlyReportDAO.addReport(report);
     }
 
-    // Retrieve reports by teacher ID
+    @Override
     public List<MonthlyTeacherReport> getReportsByTeacherId(int teacherId) {
         return monthlyReportDAO.getReportsByTeacherId(teacherId);
     }

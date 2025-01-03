@@ -5,14 +5,14 @@ import org.example.schoolmanagement.model.Subject;
 
 import java.util.List;
 
-public class SubjectService {
+public class SubjectService implements ISubjectService {
     private final SubjectDAO subjectDAO;
 
     public SubjectService() {
         this.subjectDAO = new SubjectDAO();
     }
 
-    // Add a new subject
+    @Override
     public boolean addSubject(Subject subject) {
         if (subject.getSubjectName() == null || subject.getSubjectName().isEmpty()) {
             throw new IllegalArgumentException("Subject name cannot be empty.");
@@ -20,17 +20,17 @@ public class SubjectService {
         return subjectDAO.addSubject(subject);
     }
 
-    // Retrieve all subjects
+    @Override
     public List<Subject> getAllSubjects() {
         return subjectDAO.getAllSubjects();
     }
 
-    // Retrieve a subject by ID
+    @Override
     public Subject getSubjectById(int id) {
         return subjectDAO.getSubjectById(id);
     }
 
-    // Update a subject
+    @Override
     public boolean updateSubject(Subject subject) {
         if (subject.getSubjectName() == null || subject.getSubjectName().isEmpty()) {
             throw new IllegalArgumentException("Subject name cannot be empty.");
@@ -38,7 +38,7 @@ public class SubjectService {
         return subjectDAO.updateSubject(subject);
     }
 
-    // Delete a subject by ID
+    @Override
     public boolean deleteSubject(int id) {
         return subjectDAO.deleteSubject(id);
     }

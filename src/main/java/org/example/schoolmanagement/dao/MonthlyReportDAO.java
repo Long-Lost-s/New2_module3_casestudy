@@ -3,7 +3,6 @@ package org.example.schoolmanagement.dao;
 import org.example.schoolmanagement.DatabaseConnection;
 import org.example.schoolmanagement.model.MonthlyTeacherReport;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,9 +11,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MonthlyReportDAO {
+public class MonthlyReportDAO implements IMonthlyReportDAO {
 
-    // Retrieve all monthly reports
+    @Override
     public List<MonthlyTeacherReport> getAllReports() {
         List<MonthlyTeacherReport> reports = new ArrayList<>();
         String query = "SELECT * FROM monthly_teacher_reports ORDER BY report_date DESC";
@@ -39,7 +38,7 @@ public class MonthlyReportDAO {
         return reports;
     }
 
-    // Add a new monthly report
+    @Override
     public boolean addReport(MonthlyTeacherReport report) {
         String query = "INSERT INTO monthly_teacher_reports (teacher_id, full_name, total_classes, total_students, report_date) " +
                 "VALUES (?, ?, ?, ?, ?)";
@@ -61,7 +60,7 @@ public class MonthlyReportDAO {
         return false;
     }
 
-    // Retrieve reports by teacher ID
+    @Override
     public List<MonthlyTeacherReport> getReportsByTeacherId(int teacherId) {
         List<MonthlyTeacherReport> reports = new ArrayList<>();
         String query = "SELECT * FROM monthly_teacher_reports WHERE teacher_id = ? ORDER BY report_date DESC";

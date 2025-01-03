@@ -3,14 +3,13 @@ package org.example.schoolmanagement.dao;
 import org.example.schoolmanagement.DatabaseConnection;
 import org.example.schoolmanagement.model.Subject;
 
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubjectDAO {
+public class SubjectDAO implements ISubjectDAO {
 
-    // Add a new subject
+    @Override
     public boolean addSubject(Subject subject) {
         String query = "INSERT INTO subjects (SubjectName, TeacherID) VALUES (?, 1)";
         try (Connection connection = DatabaseConnection.getConnection();
@@ -25,7 +24,7 @@ public class SubjectDAO {
         return false;
     }
 
-    // Retrieve all subjects
+    @Override
     public List<Subject> getAllSubjects() {
         List<Subject> subjects = new ArrayList<>();
         String query = "SELECT * FROM subjects";
@@ -46,7 +45,7 @@ public class SubjectDAO {
         return subjects;
     }
 
-    // Retrieve a subject by ID
+    @Override
     public Subject getSubjectById(int id) {
         String query = "SELECT * FROM subjects WHERE SubjectId = ?";
         try (Connection connection = DatabaseConnection.getConnection();
@@ -68,7 +67,7 @@ public class SubjectDAO {
         return null;
     }
 
-    // Update a subject
+    @Override
     public boolean updateSubject(Subject subject) {
         String query = "UPDATE subjects SET SubjectName = ? WHERE SubjectID = ?";
         try (Connection connection = DatabaseConnection.getConnection();
@@ -84,7 +83,7 @@ public class SubjectDAO {
         return false;
     }
 
-    // Delete a subject by ID
+    @Override
     public boolean deleteSubject(int id) {
         String query = "DELETE FROM subjects WHERE SubjectID = ?";
         try (Connection connection = DatabaseConnection.getConnection();

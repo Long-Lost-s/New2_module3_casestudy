@@ -5,34 +5,34 @@ import org.example.schoolmanagement.model.Teacher;
 
 import java.util.List;
 
-public class TeacherService {
+public class TeacherService implements ITeacherService {
     private final TeacherDAO teacherDAO;
 
     public TeacherService() {
         this.teacherDAO = new TeacherDAO();
     }
 
-    // Retrieve all teachers
+    @Override
     public List<Teacher> getAllTeachers() {
         return teacherDAO.getAllTeachers();
     }
 
-    // Find teacher by ID
+    @Override
     public Teacher getTeacherById(int teacherId) {
         return teacherDAO.getTeacherById(teacherId);
     }
 
-    // Add a new teacher
+    @Override
     public boolean addTeacher(Teacher teacher) {
         return teacherDAO.addTeacher(teacher);
     }
 
-    // Update teacher
+    @Override
     public boolean updateTeacher(Teacher teacher) {
         return teacherDAO.updateTeacher(teacher);
     }
 
-    // Delete teacher
+    @Override
     public boolean deleteTeacher(int teacherId) {
         return teacherDAO.deleteTeacher(teacherId);
     }
