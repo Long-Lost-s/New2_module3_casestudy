@@ -1,3 +1,4 @@
+
 package org.example.schoolmanagement.controller;
 
 import org.example.schoolmanagement.model.MonthlyTeacherReport;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-    @WebServlet(name = "MonthlyReportController", urlPatterns = {"/admin/monthly_teacher_report"})
+@WebServlet(name = "MonthlyReportController", urlPatterns = {"/admin/monthly_teacher_report"})
 public class MonthlyReportController extends HttpServlet {
     private final MonthlyReportService monthlyReportService;
 
