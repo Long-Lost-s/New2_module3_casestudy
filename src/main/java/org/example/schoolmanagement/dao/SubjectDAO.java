@@ -1,7 +1,9 @@
+
 package org.example.schoolmanagement.dao;
 
-import org.example.schoolmanagement.DatabaseConnection;
+
 import org.example.schoolmanagement.model.Subject;
+import org.example.schoolmanagement.utils.DatabaseConnection;
 
 import java.sql.*;
 import java.util.ArrayList;

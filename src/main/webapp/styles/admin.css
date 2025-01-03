@@ -1,0 +1,143 @@
+/* General Body Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #2c3e50, #4ca1af);
+    color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+    width: 90%;
+    max-width: 1200px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+}
+
+/* Logout Button */
+.logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #ff5e57, #ff0000);
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logout-button:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(45deg, #ff0000, #ff5e57);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Heading */
+h1 {
+    font-size: 2.5em;
+    color: #333333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* Navigation Menu */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    padding: 12px 25px;
+    border-radius: 25px;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+nav ul li a:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Success and Error Messages */
+.success, .error {
+    width: 80%;
+    margin: 20px auto;
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+}
+
+.error {
+    background-color: #f2dede;
+    color: #a94442;
+    border: 1px solid #ebccd1;
+}
+
+/* Instructions */
+p {
+    font-size: 1.2em;
+    margin-top: 30px;
+    color: #333333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav ul li a {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
