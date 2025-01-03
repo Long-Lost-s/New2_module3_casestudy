@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "AuthController", urlPatterns = {"/login", "/register"})
-
 public class AuthController extends HttpServlet {
     private final UserService userService;
 
@@ -49,13 +48,13 @@ public class AuthController extends HttpServlet {
         user.setRole(request.getParameter("role"));
 
         if (userService.registerUser(user)) {
-            response.sendRedirect("/views/login.jsp?success=Registration successful. Please log in.");
+            response.sendRedirect("/login?success=Registration successful. Please log in.");
         } else {
-            response.sendRedirect("/views/register.jsp?error=Registration failed.");
+            response.sendRedirect("/register?error=Registration failed.");
         }
     }
 
-    private void handleLogin(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void handleLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -64,22 +63,22 @@ public class AuthController extends HttpServlet {
             request.getSession().setAttribute("user", user);
             switch (user.getRole()) {
                 case "admin":
-                    response.sendRedirect("/views/admin/admin_dashboard.jsp");
+                    request.getRequestDispatcher("/admin/admin_dashboard").forward(request, response);
                     break;
                 case "academic_staff":
-                    response.sendRedirect("/views/academic_staff/dashboard.jsp");
+                    request.getRequestDispatcher("/academic_staff/dashboard").forward(request, response);
                     break;
                 case "teacher":
-                    response.sendRedirect("/views/teacher/dashboard.jsp");
+                    request.getRequestDispatcher("/teacher/dashboard").forward(request, response);
                     break;
                 case "student":
-                    response.sendRedirect("/views/student/dashboard.jsp");
+                    request.getRequestDispatcher("/student/dashboard").forward(request, response);
                     break;
                 default:
-                    response.sendRedirect("/views/login.jsp?error=Invalid role.");
+                    response.sendRedirect("/login?error=Invalid role.");
             }
         } else {
-            response.sendRedirect("/views/login.jsp?error=Invalid credentials.");
+            response.sendRedirect("/login?error=Invalid credentials.");
         }
     }
 }

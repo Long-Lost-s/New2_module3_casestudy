@@ -1,4 +1,4 @@
-package org.example.schoolmanagement;
+package org.example.schoolmanagement.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
