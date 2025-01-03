@@ -1,6 +1,6 @@
 package org.example.schoolmanagement.dao;
 
-import org.example.schoolmanagement.DatabaseConnection;
+import org.example.schoolmanagement.util.DatabaseConnection;
 import org.example.schoolmanagement.model.Teacher;
 
 import java.sql.Connection;
