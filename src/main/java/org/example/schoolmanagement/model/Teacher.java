@@ -5,22 +5,9 @@ public class Teacher {
     private String fullName;
     private String email;
     private String phoneNumber;
-    private int totalClasses;
-    private int totalStudents;
+    private int totalStudents; // New field
 
-    // Constructors
-    public Teacher() {}
-
-    public Teacher(int teacherId, String fullName, String email, String phoneNumber, int totalClasses, int totalStudents) {
-        this.teacherId = teacherId;
-        this.fullName = fullName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.totalClasses = totalClasses;
-        this.totalStudents = totalStudents;
-    }
-
-    // Getters and Setters
+    // Getters and setters for all fields, including the new field
     public int getTeacherId() {
         return teacherId;
     }
@@ -51,14 +38,6 @@ public class Teacher {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public int getTotalClasses() {
-        return totalClasses;
-    }
-
-    public void setTotalClasses(int totalClasses) {
-        this.totalClasses = totalClasses;
     }
 
     public int getTotalStudents() {

@@ -1,13 +1,13 @@
+
 package org.example.schoolmanagement.dao;
 
-import org.example.schoolmanagement.DatabaseConnection;
 import org.example.schoolmanagement.model.MonthlyTeacherReport;
+import org.example.schoolmanagement.utils.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
