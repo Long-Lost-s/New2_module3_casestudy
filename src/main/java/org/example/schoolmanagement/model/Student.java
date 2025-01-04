@@ -5,25 +5,9 @@ public class Student {
     private String fullName;
     private String email;
     private String phoneNumber;
-    private int classId;
     private String status;
-    private String dateOfBirth;
-    private String address;
 
-    public Student(int studentId, String fullName, String email, String phoneNumber, int classId, String status, String dateOfBirth, String address) {
-        this.studentId = studentId;
-        this.fullName = fullName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.classId = classId;
-        this.status = status;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-    }
-
-    public Student() {
-    }
-
+    // Getters and Setters
     public int getStudentId() {
         return studentId;
     }
@@ -56,35 +40,11 @@ public class Student {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getClassId() {
-        return classId;
-    }
-
-    public void setClassId(int classId) {
-        this.classId = classId;
-    }
-
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 }

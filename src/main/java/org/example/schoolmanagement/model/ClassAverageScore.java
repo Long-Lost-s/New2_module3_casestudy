@@ -1,20 +1,11 @@
-
 package org.example.schoolmanagement.model;
 
-public class SchoolClass {
+public class ClassAverageScore {
     private int classId;
     private String className;
-    private int teacherId;
+    private double averageScore;
 
-    public SchoolClass(int classId, String className, int teacherId) {
-        this.classId = classId;
-        this.className = className;
-        this.teacherId = teacherId;
-    }
-
-    public SchoolClass() {
-    }
-
+    // Getters and setters
     public int getClassId() {
         return classId;
     }
@@ -31,11 +22,11 @@ public class SchoolClass {
         this.className = className;
     }
 
-    public int getTeacherId() {
-        return teacherId;
+    public double getAverageScore() {
+        return averageScore;
     }
 
-    public void setTeacherId(int teacherId) {
-        this.teacherId = teacherId;
+    public void setAverageScore(double averageScore) {
+        this.averageScore = averageScore;
     }
 }
