@@ -10,6 +10,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SubjectDAO implements ISubjectDAO {
+    private final String SELECT_ALL_SUBJECTS = "SELECT * FROM subjects";
+
+    public List<Subject> selectAllSubjects() {
+        List<Subject> subjects = new ArrayList<Subject>();
+        try(Connection connection = DatabaseConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_SUBJECTS);) {
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int subjectId = rs.getInt("SubjectId");
+                String subjectName = rs.getString("SubjectName");
+//                int teacherId = Integer.parseInt(rs.getString("TeacherId"));
+                Subject subject = new Subject(subjectId,subjectName);
+                subjects.add(subject);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return subjects;
+    }
 
     @Override
     public boolean addSubject(Subject subject) {

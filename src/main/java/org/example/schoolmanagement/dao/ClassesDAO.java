@@ -1,0 +1,57 @@
+package org.example.schoolmanagement.dao;
+
+
+import org.example.schoolmanagement.model.Classes;
+import org.example.schoolmanagement.utils.DatabaseConnection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ClassesDAO implements IClassesDAO {
+    private String SELECT_ALL_CLASSES = "SELECT * FROM classes";
+
+    @Override
+    public List<Classes> selectAllClasses() {
+        List<Classes> classes = new ArrayList<Classes>();
+        try(Connection connection = DatabaseConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CLASSES);) {
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int classId = rs.getInt("ClassId");
+                String className = rs.getString("ClassName");
+                int teacherId = Integer.parseInt(rs.getString("TeacherId"));
+                Classes classs = new Classes(classId,className,teacherId);
+                classes.add(classs);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return classes;
+    }
+
+    @Override
+    public void insertClasses(Classes classes) {
+
+    }
+
+    @Override
+    public void updateClasses(Classes classes) {
+
+    }
+
+    @Override
+    public void deleteClasses(Classes classes) {
+
+    }
+
+    @Override
+    public Classes selectClasses(int id) {
+        return null;
+    }
+}
