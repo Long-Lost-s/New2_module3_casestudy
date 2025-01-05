@@ -2,6 +2,7 @@ package org.example.schoolmanagement.dao;
 
 import org.example.schoolmanagement.model.Classes;
 import org.example.schoolmanagement.model.Student;
+import org.example.schoolmanagement.model.StudentStatus;
 import org.example.schoolmanagement.utils.DatabaseConnection;
 
 import java.sql.Connection;
@@ -105,7 +106,7 @@ public class ClassesDAO {
                     student.setFullName(resultSet.getString("FullName"));
                     student.setEmail(resultSet.getString("Email"));
                     student.setPhoneNumber(resultSet.getString("PhoneNumber"));
-                    student.setStatus(resultSet.getString("Status"));
+                    student.setStatus(StudentStatus.fromString(resultSet.getString("Status")));
                     students.add(student);
                 }
             }
