@@ -18,8 +18,8 @@
 <h1>Welcome to Teacher Dashboard</h1>
 <nav>
   <ul>
-    <li><a href="/teacher/classes">My Classes</a></li>
-    <li><a href="/teacher/students">View Students</a></li>
+    <li><a href="/views/teacher/listStudent.jsp">My Classes</a></li>
+    <li><a href="/views/teacher/editStudentStatus.jsp">View Students</a></li>
     <li><a href="/logout">Logout</a></li>
   </ul>
 </nav>
