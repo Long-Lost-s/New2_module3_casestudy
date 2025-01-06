@@ -43,8 +43,12 @@
             float: left;
             padding: 0 10px;
         }
-        #select-class-id select {
-
+        #select-status {
+            float: right;
+        }
+        #select-status p {
+            float: left;
+            padding: 0 10px;
         }
     </style>
 </head>
@@ -56,12 +60,22 @@
                 <div id="select-class-id">
                     <p>Lớp: </p>
                     <select id="classId" name="classId" onchange="getStudentByClass()">
-                        <option value=""></option>
+                        <option value="%"></option>
                         <c:forEach var="classs" items="${classesList}">
                             <option value="${classs.getClassId()}">
                                 <c:out value="${classs.getClassName()}"/>
                             </option>
                         </c:forEach>
+                    </select>
+                </div>
+                <div id="select-status">
+                    <p>Trạng thái: </p>
+                    <select id="status" name="status" onchange="getStudentByClass()">
+                        <option value="%"></option>
+                        <option value="Thôi học">Thôi học</option>
+                        <option value="Đình chỉ">Đình chỉ</option>
+                        <option value="Chờ chuyển lớp">Chờ chuyển lớp</option>
+                        <option value="Đang học">Đang học</option>
                     </select>
                 </div>
             </caption>
@@ -89,14 +103,17 @@
     </div>
     <script>
         let elementSelectClass = document.getElementById("classId");
+        let elementSelectStatus = document.getElementById("status")
 
         function getStudentByClass() {
             let classId = elementSelectClass.value;
-            window.location.href = "/teacher/dashboard?classId=" + classId;
+            let studentStatus = elementSelectStatus.value;
+            window.location.href = "/teacher/dashboard?classId=" + classId + "&status=" + studentStatus;
         }
 
         function setSelectClassOption() {
             elementSelectClass.value = "<c:out value="${classId}"/>";
+            elementSelectStatus.value = "<c:out value="${status}"/>";
         }
 
         setSelectClassOption();
