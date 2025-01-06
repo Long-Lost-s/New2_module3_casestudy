@@ -17,7 +17,6 @@
 <nav>
   <ul class="nav-menu">
     <li><a href="/admin/teachers">Manage Teachers</a></li>
-    <li><a href="/admin/students">Manage Students</a></li>
     <li><a href="/admin/classes?action=list">Manage Classes</a></li>
     <li><a href="/admin/subjects">Manage Subjects</a></li>
     <li><a href="/admin/monthly_teacher_report">Monthly Teacher Reports</a></li>
