@@ -48,21 +48,8 @@
       </ul>
     </div>
   </div>
+
 </nav>
-
-<main class="container mt-4">
-  <div class="content-container">
-    <p>Select an option from the menu above to manage the system.</p>
-
-    <!-- Success or Error Messages -->
-    <c:if test="${param.success != null}">
-      <div class="alert alert-success">${param.success}</div>
-    </c:if>
-    <c:if test="${param.error != null}">
-      <div class="alert alert-danger">${param.error}</div>
-    </c:if>
-  </div>
-</main>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

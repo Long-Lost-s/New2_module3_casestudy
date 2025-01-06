@@ -27,10 +27,24 @@
         width: 100%;
         color: #fff;
     }
+
+     .back-to-dashboard {
+         color: #007bff;
+         text-decoration: none;
+         font-weight: bold;
+     }
+    .back-to-dashboard:hover {
+        text-decoration: underline;
+    }
+
 </style>
 
+
 <div class="container mt-5">
+    <a class="back-to-dashboard" href="/views/admin/admin_dashboard.jsp">Back to Dashboard</a>
+
     <h1 class="text-center mb-4 hh">Teachers List</h1>
+
 
     <!-- Form for adding a new teacher -->
     <h2 class="text-center mb-4">Add Teacher</h2>
@@ -124,6 +138,5 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<a href="/views/admin/admin_dashboard.jsp">Back to Dashboard</a>
 </body>
 </html>
