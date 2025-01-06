@@ -5,6 +5,31 @@
 <head>
     <title>User Management Application</title>
     <style>
+        .header {
+            font-family: Arial, sans-serif;
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header .logout {
+            font-size: 16px;
+            text-decoration: none;
+            color: white;
+            background-color: #0056b3;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .header .logout:hover {
+            background-color: #003f8a;
+        }
         #data {
             margin: 20px auto;
             width: fit-content;
@@ -49,6 +74,10 @@
     </style>
 </head>
 <body>
+    <header class="header">
+        <h1>Teacher Dashboard</h1>
+        <a href="/logout" class="logout">Logout</a>
+    </header>
     <div id="data">
         <table id="table">
             <caption>
