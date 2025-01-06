@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-@WebServlet(name = "TeacherDashboardController", urlPatterns = {"/teacher/dashboard"})
 
+@WebServlet(name = "TeacherDashboardController", urlPatterns = {"/teacher/dashboard"})
 public class TeacherDashboardController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
