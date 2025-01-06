@@ -10,7 +10,7 @@
 <header class="bg-primary text-white p-3 mb-4">
     <div class="container">
         <h1>Manage Classes</h1>
-        <a href="/views/admin/admin_dashboard.jsp" class="btn btn-secondary">Back to Dashboard</a>
+        <a href="/admin/admin_dashboard" class="btn btn-secondary">Back to Dashboard</a>
     </div>
 </header>
 

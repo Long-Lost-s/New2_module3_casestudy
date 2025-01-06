@@ -28,7 +28,7 @@
 </head>
 <body>
 <h1>All Student Scores</h1>
-<a href="/views/student/dashboard.jsp">Back to Dashboard</a>
+<a href="/student/dashboard">Back to Dashboard</a>
 
     <div class="select-container">
         <p>Học viên: </p>
