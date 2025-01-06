@@ -2,6 +2,7 @@ package org.example.schoolmanagement.controller;
 
 import org.example.schoolmanagement.dao.StudentDAO;
 import org.example.schoolmanagement.model.Student;
+import org.example.schoolmanagement.model.StudentName;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,8 +24,15 @@ public class ViewAllStudentScoresController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String studentId = request.getParameter("studentId");
+        if (studentId == null) studentId = "%";
+
+        List<StudentName> studentNames = studentDAO.selectAllStudentName();
+        request.setAttribute("studentNames", studentNames);
+        request.setAttribute("studentId", studentId);
+
         try {
-            List<Student> students = studentDAO.getAllStudentsWithScores();
+            List<Student> students = studentDAO.getAllStudentsWithScores(studentId);
             request.setAttribute("students", students);
             logger.info("Students and scores fetched and set as request attribute");
         } catch (SQLException e) {

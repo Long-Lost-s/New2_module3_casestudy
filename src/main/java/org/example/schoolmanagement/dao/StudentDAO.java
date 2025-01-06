@@ -2,6 +2,7 @@ package org.example.schoolmanagement.dao;
 
 import org.example.schoolmanagement.model.Score;
 import org.example.schoolmanagement.model.Student;
+import org.example.schoolmanagement.model.StudentName;
 import org.example.schoolmanagement.model.StudentStatus;
 import org.example.schoolmanagement.utils.DatabaseConnection;
 
@@ -31,6 +32,25 @@ public class StudentDAO {
             "FROM students JOIN scores " +
             "ON students.StudentId = scores.StudentId " +
             "WHERE scores.SubjectId = 1;";
+
+    public List<StudentName> selectAllStudentName() {
+        List<StudentName> studentNames = new ArrayList<>();
+        try(Connection connection = DatabaseConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_STUDENTS);) {
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                int studentId = rs.getInt("StudentId");
+                String fullName = rs.getString("FullName");
+                StudentName studentName = new StudentName(studentId, fullName);
+                studentNames.add(studentName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return studentNames;
+    }
 
     public List<Student> selectAllStudents() {
         List<Student> students = new ArrayList<>();
@@ -182,15 +202,19 @@ public class StudentDAO {
     private static final Logger logger = Logger.getLogger(StudentDAO.class.getName());
 
 
-    public List<Student> getAllStudentsWithScores() throws SQLException {
+    public List<Student> getAllStudentsWithScores(String id) throws SQLException {
         List<Student> students = new ArrayList<>();
         String sql = "SELECT st.StudentId, st.FullName, s.SubjectName, sc.TheoryScore, sc.PracticeScore, sc.average_score " +
                 "FROM students st " +
                 "LEFT JOIN scores sc ON st.StudentId = sc.StudentId " +
-                "LEFT JOIN subjects s ON sc.SubjectId = s.SubjectId";
+                "LEFT JOIN subjects s ON sc.SubjectId = s.SubjectId " +
+                "WHERE st.StudentId LIKE ?";
 
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setString(1, id);
+
+            System.out.println(preparedStatement);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
