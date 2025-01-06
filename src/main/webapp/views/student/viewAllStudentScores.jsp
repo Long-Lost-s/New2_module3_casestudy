@@ -8,6 +8,7 @@
 </head>
 <body>
 <h1>All Student Scores</h1>
+<a href="/views/student/dashboard.jsp">Back to Dashboard</a>
 
 <c:if test="${not empty students}">
     <table>

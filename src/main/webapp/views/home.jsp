@@ -67,7 +67,7 @@
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand" href="#">
-            ILA
+            MHLNH
         </a>
 
         <!-- Toggle Button for Mobile -->

@@ -16,11 +16,14 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #f8f9fa;
+      background-image: url('/views/img/background(1).jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
     }
     .container {
       max-width: 400px;
-      background-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.8); /* Make the background slightly transparent */
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
