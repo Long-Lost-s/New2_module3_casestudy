@@ -1,6 +1,8 @@
 package org.example.schoolmanagement.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Student {
     private int studentId;
@@ -11,13 +13,13 @@ public class Student {
     private LocalDate dateOfBirth;
     private String address;
     private int classId;
+    private List<Score> scores;
 
-    public Student() {}
+    public Student() {
+        scores = new ArrayList<>();
+    }
 
-    public Student(int studentId, String fullName,
-                   String email, String phoneNumber,
-                   StudentStatus status, LocalDate dateOfBirth,
-                   String address, int classId) {
+    public Student(int studentId, String fullName, String email, String phoneNumber, StudentStatus status, LocalDate dateOfBirth, String address, int classId) {
         this.studentId = studentId;
         this.fullName = fullName;
         this.email = email;
@@ -26,6 +28,7 @@ public class Student {
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.classId = classId;
+        this.scores = new ArrayList<>();
     }
 
     public int getStudentId() {
@@ -92,6 +95,14 @@ public class Student {
         this.classId = classId;
     }
 
+    public List<Score> getScores() {
+        return scores;
+    }
+
+    public void addScore(Score score) {
+        scores.add(score);
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -103,6 +114,7 @@ public class Student {
                 ", dateOfBirth=" + dateOfBirth +
                 ", address='" + address + '\'' +
                 ", classId=" + classId +
+                ", scores=" + scores +
                 '}';
     }
 }

@@ -17,8 +17,8 @@
 <h1>Welcome to Academic Staff Dashboard</h1>
 <nav>
   <ul>
-    <li><a href="/academic_staff/classes">Manage Classes</a></li>
-    <li><a href="/academic_staff/students">Manage Students</a></li>
+    <li><a href="/views/academic_staff/listStudentScores.jsp">Manage Classes</a></li>
+    <li><a href="/views/academic_staff/editStudentScore.jsp">Manage Students</a></li>
     <li><a href="/logout">Logout</a></li>
   </ul>
 </nav>
