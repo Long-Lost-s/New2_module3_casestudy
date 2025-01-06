@@ -36,15 +36,25 @@
         caption h2{
             float: left;
         }
-        #select-class-id {
+        .select-container {
             float: right;
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        #select-class-id p {
-            float: left;
-            padding: 0 10px;
+        select {
+            width: 100%;
+            max-width: 100px;
+            padding: 5px;
+            font-size: 12px;
+            outline: none;
+            cursor: pointer;
         }
-        #select-class-id select {
-
+        select h2 {
+            margin: 0;
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -53,15 +63,25 @@
         <table id="table">
             <caption>
                 <h2>Danh sách học viên</h2>
-                <div id="select-class-id">
+                <div class="select-container">
                     <p>Lớp: </p>
                     <select id="classId" name="classId" onchange="getStudentByClass()">
-                        <option value=""></option>
+                        <option value="%"></option>
                         <c:forEach var="classs" items="${classesList}">
                             <option value="${classs.getClassId()}">
                                 <c:out value="${classs.getClassName()}"/>
                             </option>
                         </c:forEach>
+                    </select>
+                </div>
+                <div class="select-container">
+                    <p>Trạng thái: </p>
+                    <select id="status" name="status" onchange="getStudentByClass()">
+                        <option value="%"></option>
+                        <option value="Thôi học">Thôi học</option>
+                        <option value="Đình chỉ">Đình chỉ</option>
+                        <option value="Chờ chuyển lớp">Chờ chuyển lớp</option>
+                        <option value="Đang học">Đang học</option>
                     </select>
                 </div>
             </caption>
@@ -89,14 +109,17 @@
     </div>
     <script>
         let elementSelectClass = document.getElementById("classId");
+        let elementSelectStatus = document.getElementById("status")
 
         function getStudentByClass() {
             let classId = elementSelectClass.value;
-            window.location.href = "/teacher/dashboard?classId=" + classId;
+            let studentStatus = elementSelectStatus.value;
+            window.location.href = "/teacher/dashboard?classId=" + classId + "&status=" + studentStatus;
         }
 
         function setSelectClassOption() {
             elementSelectClass.value = "<c:out value="${classId}"/>";
+            elementSelectStatus.value = "<c:out value="${status}"/>";
         }
 
         setSelectClassOption();

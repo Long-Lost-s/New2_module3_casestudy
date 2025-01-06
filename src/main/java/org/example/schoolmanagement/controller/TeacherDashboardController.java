@@ -73,20 +73,23 @@ public class TeacherDashboardController extends HttpServlet {
     private void listStudents (HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         String classId = request.getParameter("classId");
-        if (classId == null) classId = "";
+        String status = request.getParameter("status");
+        if (classId == null) classId = "%";
+        if (status == null) status = "%";
 
         List<Student> studentList;
-        if (classId.isEmpty()) {
-            studentList = studentDAO.selectAllStudents();
-        } else {
-            studentList = studentDAO.selectStudentsByClass(Integer.parseInt(classId));
-        }
+        studentList = studentDAO.selectStudentsByClass(classId, status);
+//        if (classId.isEmpty()) {
+//            studentList = studentDAO.selectAllStudents();
+//        } else {
+//        }
 
         List<Classes> classesList = classDAO.getAllClasses();
 
         request.setAttribute("studentList", studentList);
         request.setAttribute("classesList", classesList);
         request.setAttribute("classId", classId);
+        request.setAttribute("status", status);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/teacher/listStudent.jsp");
         dispatcher.forward(request, response);
