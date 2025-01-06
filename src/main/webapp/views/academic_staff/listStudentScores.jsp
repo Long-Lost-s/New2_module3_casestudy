@@ -79,7 +79,6 @@
         }
         .select-container {
             float: right;
-            background-color: white;
             padding: 10px;
             display: flex;
             align-items: center;
@@ -93,7 +92,7 @@
             outline: none;
             cursor: pointer;
         }
-        select h2 {
+        select p {
             margin: 0;
             white-space: nowrap;
         }
