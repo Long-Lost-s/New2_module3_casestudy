@@ -1,13 +1,36 @@
 package org.example.schoolmanagement.model;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Student {
     private int studentId;
     private String fullName;
     private String email;
     private String phoneNumber;
-    private String status;
+    private StudentStatus status;
+    private LocalDate dateOfBirth;
+    private String address;
+    private int classId;
+    private List<Score> scores;
 
-    // Getters and Setters
+    public Student() {
+        scores = new ArrayList<>();
+    }
+
+    public Student(int studentId, String fullName, String email, String phoneNumber, StudentStatus status, LocalDate dateOfBirth, String address, int classId) {
+        this.studentId = studentId;
+        this.fullName = fullName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.status = status;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.classId = classId;
+        this.scores = new ArrayList<>();
+    }
+
     public int getStudentId() {
         return studentId;
     }
@@ -40,11 +63,58 @@ public class Student {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getStatus() {
+    public StudentStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StudentStatus status) {
         this.status = status;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getClassId() {
+        return classId;
+    }
+
+    public void setClassId(int classId) {
+        this.classId = classId;
+    }
+
+    public List<Score> getScores() {
+        return scores;
+    }
+
+    public void addScore(Score score) {
+        scores.add(score);
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", status=" + status +
+                ", dateOfBirth=" + dateOfBirth +
+                ", address='" + address + '\'' +
+                ", classId=" + classId +
+                ", scores=" + scores +
+                '}';
     }
 }

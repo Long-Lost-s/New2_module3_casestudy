@@ -105,7 +105,6 @@ public class ClassesDAO {
                     student.setFullName(resultSet.getString("FullName"));
                     student.setEmail(resultSet.getString("Email"));
                     student.setPhoneNumber(resultSet.getString("PhoneNumber"));
-                    student.setStatus(resultSet.getString("Status"));
                     students.add(student);
                 }
             }

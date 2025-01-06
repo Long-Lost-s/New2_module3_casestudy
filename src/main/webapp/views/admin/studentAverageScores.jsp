@@ -4,26 +4,33 @@
 <html>
 <head>
     <title>Student Average Scores</title>
-    <link rel="stylesheet" type="text/css" href="/styles/studentAverageScores.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<h1>Student Average Scores</h1>
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Student Average Scores</h1>
 
-<form method="get" action="/admin/teachers">
-    <input type="hidden" name="action" value="viewStudentScores">
-    <label for="classId">Select Class:</label>
-    <select name="classId" id="classId" onchange="this.form.submit()">
-        <option value="">--Select Class--</option>
-        <c:forEach var="clazz" items="${classes}">
-            <option value="${clazz.classId}" ${param.classId == clazz.classId ? 'selected' : ''}>${clazz.className}</option>
-        </c:forEach>
-    </select>
-</form>
+    <form method="get" action="/admin/teachers" class="mb-4">
+        <input type="hidden" name="action" value="viewStudentScores">
+        <div class="form-group">
+            <label for="classId">Select Class:</label>
+            <select name="classId" id="classId" class="form-control" onchange="this.form.submit()">
+                <option value="">--Select Class--</option>
+                <c:forEach var="clazz" items="${classes}">
+                    <option value="${clazz.classId}" ${param.classId == clazz.classId ? 'selected' : ''}>${clazz.className}</option>
+                </c:forEach>
+            </select>
+        </div>
+    </form>
 
-<div class="chart-container">
-    <canvas id="averageScoresChart" width="400" height="200"></canvas>
+    <div class="chart-container mb-4">
+        <canvas id="averageScoresChart" width="400" height="200"></canvas>
+    </div>
+
+    <a href="/admin/teachers" class="btn btn-secondary">Back to Teachers List</a>
 </div>
+
 <script>
     const ctx = document.getElementById('averageScoresChart').getContext('2d');
     const chartContainer = document.querySelector('.chart-container');
@@ -67,6 +74,8 @@
         }
     });
 </script>
-<a href="/admin/teachers">Back to Teachers List</a>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

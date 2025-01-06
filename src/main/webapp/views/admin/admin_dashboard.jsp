@@ -4,38 +4,55 @@
 <html>
 <head>
   <title>Admin Dashboard</title>
-  <link rel="stylesheet" type="text/css" href="/styles/admin.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-image: url('/views/img/background(1).jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #ff5722;
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div class="header-container">
+<header class="bg-primary text-white p-3 mb-3">
+  <div class="container d-flex justify-content-between align-items-center">
     <h1>Admin Dashboard</h1>
-    <a href="/logout" class="logout-button">Logout</a>
+    <a href="/logout" class="btn btn-danger">Logout</a>
   </div>
 </header>
 
-<nav>
-  <ul class="nav-menu">
-    <li><a href="/admin/teachers">Manage Teachers</a></li>
-    <li><a href="/admin/students">Manage Students</a></li>
-    <li><a href="/admin/classes?action=list">Manage Classes</a></li>
-    <li><a href="/admin/subjects">Manage Subjects</a></li>
-    <li><a href="/admin/monthly_teacher_report">Monthly Teacher Reports</a></li>
-  </ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link highlight" href="/admin/teachers">Manage Teachers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link highlight" href="/admin/classes?action=list">Manage Classes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link highlight" href="/admin/subjects">Manage Subjects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/monthly_teacher_report">Monthly Teacher Reports</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
 </nav>
 
-<main>
-  <div class="content-container">
-    <p>Select an option from the menu above to manage the system.</p>
-
-    <!-- Success or Error Messages -->
-    <c:if test="${param.success != null}">
-      <p class="success">${param.success}</p>
-    </c:if>
-    <c:if test="${param.error != null}">
-      <p class="error">${param.error}</p>
-    </c:if>
-  </div>
-</main>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
