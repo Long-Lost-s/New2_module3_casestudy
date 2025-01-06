@@ -1,5 +1,6 @@
 package org.example.schoolmanagement.controller;
 
+import org.example.schoolmanagement.dao.TeacherDAO;
 import org.example.schoolmanagement.model.Class;
 import org.example.schoolmanagement.model.ClassAverageScore;
 import org.example.schoolmanagement.model.StudentAverageScore;
@@ -12,14 +13,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Logger;
 
 @WebServlet(name = "TeacherController", urlPatterns = {"/admin/teachers"})
 public class TeacherController extends HttpServlet {
     private final TeacherService teacherService;
+    private TeacherDAO teacherDAO;
+    private static final Logger logger = Logger.getLogger(TeacherController.class.getName());
 
     public TeacherController() {
         this.teacherService = new TeacherService();
+        this.teacherDAO = new TeacherDAO();
     }
 
     @Override
@@ -36,11 +42,25 @@ public class TeacherController extends HttpServlet {
             request.getRequestDispatcher("/views/admin/addTeacher.jsp").forward(request, response);
         } else if ("averageScores".equals(action)) {
             handleAverageScoresRequest(request, response);
+        } else if ("search".equals(action)) {
+            searchTeacherByName(request, response);
         } else if ("viewStudentScores".equals(action)) {
                 handleViewStudentScoresRequest(request, response);
         } else {
             handleListRequest(request, response);
         }
+    }
+
+    private void searchTeacherByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        try {
+            List<Teacher> teachers = teacherDAO.searchTeachersByName(name);
+            request.setAttribute("teachers", teachers);
+            logger.info("Teachers fetched and set as request attribute");
+        } catch (SQLException e) {
+            logger.severe("Error fetching teachers: " + e.getMessage());
+        }
+        request.getRequestDispatcher("/views/admin/teachers.jsp").forward(request, response);
     }
 
     private void handleViewStudentScoresRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

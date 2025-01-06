@@ -107,4 +107,28 @@ public class TeacherDAO implements ITeacherDAO {
         }
         return false;
     }
+
+    public List<Teacher> searchTeachersByName(String name) throws SQLException {
+        List<Teacher> teachers = new ArrayList<>();
+        String sql = "SELECT * FROM teachers WHERE fullName LIKE ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, "%" + name + "%");
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("teacherId");
+                    String fullName = resultSet.getString("fullName");
+                    String email = resultSet.getString("email");
+                    String phoneNumber = resultSet.getString("phoneNumber");
+
+                    Teacher teacher = new Teacher(id, fullName, email, phoneNumber);
+                    teachers.add(teacher);
+                }
+            }
+        }
+        return teachers;
+    }
 }

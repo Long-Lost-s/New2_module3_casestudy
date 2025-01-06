@@ -5,9 +5,21 @@ public class Teacher {
     private String fullName;
     private String email;
     private String phoneNumber;
-    private int totalStudents; // New field
+    private int totalStudents;
 
-    // Getters and setters for all fields, including the new field
+    // Default constructor
+    public Teacher() {
+    }
+
+    // Constructor with parameters
+    public Teacher(int teacherId, String fullName, String email, String phoneNumber) {
+        this.teacherId = teacherId;
+        this.fullName = fullName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    // Getters and setters
     public int getTeacherId() {
         return teacherId;
     }

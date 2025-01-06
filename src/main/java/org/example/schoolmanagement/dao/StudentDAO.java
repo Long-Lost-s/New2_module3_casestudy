@@ -1,5 +1,6 @@
 package org.example.schoolmanagement.dao;
 
+import org.example.schoolmanagement.model.Score;
 import org.example.schoolmanagement.model.Student;
 import org.example.schoolmanagement.model.StudentStatus;
 import org.example.schoolmanagement.utils.DatabaseConnection;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class StudentDAO {
     private final String SELECT_ALL_STUDENTS = "SELECT * FROM students";
@@ -148,6 +150,69 @@ public class StudentDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+        return students;
+    }
+
+    public List<Score> getScoresByStudentIdAndExamPeriod(int studentId, String examPeriod) throws SQLException {
+        List<Score> scores = new ArrayList<>();
+        String sql = "SELECT s.SubjectName, sc.TheoryScore, sc.PracticeScore, sc.average_score " +
+                "FROM scores sc " +
+                "JOIN subjects s ON sc.SubjectId = s.SubjectId " +
+                "WHERE sc.StudentId = ? AND sc.exam_period = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, studentId);
+            preparedStatement.setString(2, examPeriod);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Score score = new Score();
+                score.setSubjectName(resultSet.getString("SubjectName"));
+                score.setTheoryScore(resultSet.getBigDecimal("TheoryScore"));
+                score.setPracticeScore(resultSet.getBigDecimal("PracticeScore"));
+                score.setAverageScore(resultSet.getBigDecimal("average_score"));
+                scores.add(score);
+            }
+        }
+        return scores;
+    }
+
+    private static final Logger logger = Logger.getLogger(StudentDAO.class.getName());
+
+
+    public List<Student> getAllStudentsWithScores() throws SQLException {
+        List<Student> students = new ArrayList<>();
+        String sql = "SELECT st.StudentId, st.FullName, s.SubjectName, sc.TheoryScore, sc.PracticeScore, sc.average_score " +
+                "FROM students st " +
+                "LEFT JOIN scores sc ON st.StudentId = sc.StudentId " +
+                "LEFT JOIN subjects s ON sc.SubjectId = s.SubjectId";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int studentId = resultSet.getInt("StudentId");
+                String fullName = resultSet.getString("FullName");
+                String subjectName = resultSet.getString("SubjectName");
+                Score score = new Score();
+                score.setSubjectName(subjectName);
+                score.setTheoryScore(resultSet.getBigDecimal("TheoryScore"));
+                score.setPracticeScore(resultSet.getBigDecimal("PracticeScore"));
+                score.setAverageScore(resultSet.getBigDecimal("average_score"));
+
+                Student student = new Student();
+                student.setStudentId(studentId);
+                student.setFullName(fullName);
+                student.addScore(score);
+
+                students.add(student);
+            }
+        } catch (SQLException e) {
+            logger.severe("Error fetching students and scores: " + e.getMessage());
+            throw e;
         }
         return students;
     }
