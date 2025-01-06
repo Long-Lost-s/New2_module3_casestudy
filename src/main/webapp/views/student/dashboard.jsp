@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
     body {
-      background-image: url('/views/img/background.jpg');
+      background-image: url('/views/img/background(1).jpg');
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
