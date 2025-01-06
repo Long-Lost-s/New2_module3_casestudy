@@ -36,15 +36,25 @@
         caption h2{
             float: left;
         }
-        #select-class-id {
+        .select-container {
             float: right;
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        #select-class-id p {
-            float: left;
-            padding: 0 10px;
+        select {
+            width: 100%;
+            max-width: 100px;
+            padding: 5px;
+            font-size: 12px;
+            outline: none;
+            cursor: pointer;
         }
-        #select-class-id select {
-
+        select h2 {
+            margin: 0;
+            white-space: nowrap;
         }
         .editable:hover {
             background-color: wheat;
@@ -57,7 +67,7 @@
         <table id="table">
             <caption>
                 <h2>Danh sách điểm học viên</h2>
-                <div id="select-class-id">
+                <div class="select-container">
                     <p>Môn: </p>
                     <select id="subjectId" name="subjectId" onchange="getStudentScoreBySubject()">
                         <option value="-1" disabled></option>

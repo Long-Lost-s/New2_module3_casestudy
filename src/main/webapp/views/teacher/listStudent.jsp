@@ -36,19 +36,25 @@
         caption h2{
             float: left;
         }
-        #select-class-id {
+        .select-container {
             float: right;
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-        #select-class-id p {
-            float: left;
-            padding: 0 10px;
+        select {
+            width: 100%;
+            max-width: 100px;
+            padding: 5px;
+            font-size: 12px;
+            outline: none;
+            cursor: pointer;
         }
-        #select-status {
-            float: right;
-        }
-        #select-status p {
-            float: left;
-            padding: 0 10px;
+        select h2 {
+            margin: 0;
+            white-space: nowrap;
         }
     </style>
 </head>
@@ -57,7 +63,7 @@
         <table id="table">
             <caption>
                 <h2>Danh sách học viên</h2>
-                <div id="select-class-id">
+                <div class="select-container">
                     <p>Lớp: </p>
                     <select id="classId" name="classId" onchange="getStudentByClass()">
                         <option value="%"></option>
@@ -68,7 +74,7 @@
                         </c:forEach>
                     </select>
                 </div>
-                <div id="select-status">
+                <div class="select-container">
                     <p>Trạng thái: </p>
                     <select id="status" name="status" onchange="getStudentByClass()">
                         <option value="%"></option>
