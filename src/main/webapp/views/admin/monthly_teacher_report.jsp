@@ -10,7 +10,7 @@
 <div class="container mt-4">
   <h1 class="text-center mb-4">Monthly Teacher Report</h1>
 
-  <p><a href="/views/admin/admin_dashboard.jsp" class="btn btn-secondary">Back to Dashboard</a></p>
+  <p><a href="/admin/admin_dashboard" class="btn btn-secondary">Back to Dashboard</a></p>
 
   <!-- Success or error message -->
   <c:if test="${param.success != null}">

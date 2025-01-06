@@ -41,7 +41,7 @@
 
 
 <div class="container mt-5">
-    <a class="back-to-dashboard" href="/views/admin/admin_dashboard.jsp">Back to Dashboard</a>
+    <a class="back-to-dashboard" href="/admin/admin_dashboard">Back to Dashboard</a>
 
     <h1 class="text-center mb-4 hh">Teachers List</h1>
 
