@@ -5,6 +5,22 @@
 <head>
     <title>User Management Application</title>
     <style>
+        body {
+            position: relative;
+            background-image: url('/views/img/background(1).jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5); /* Adjust the opacity as needed */
+            z-index: -1;
+        }
         .header {
             font-family: Arial, sans-serif;
             background-color: #007bff;
@@ -61,97 +77,75 @@
         caption h2{
             float: left;
         }
-        .select-container {
+        #select-class-id {
             float: right;
-            background-color: white;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
-        select {
-            width: 100%;
-            max-width: 100px;
-            padding: 5px;
-            font-size: 12px;
-            outline: none;
-            cursor: pointer;
+        #select-class-id p {
+            float: left;
+            padding: 0 10px;
         }
-        select h2 {
-            margin: 0;
-            white-space: nowrap;
+        #select-class-id select {
+
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1>Teacher Dashboard</h1>
-        <a href="/logout" class="logout">Logout</a>
-    </header>
-    <div id="data">
-        <table id="table">
-            <caption>
-                <h2>Danh sách học viên</h2>
-                <div class="select-container">
-                    <p>Lớp: </p>
-                    <select id="classId" name="classId" onchange="getStudentByClass()">
-                        <option value="%"></option>
-                        <c:forEach var="classs" items="${classesList}">
-                            <option value="${classs.getClassId()}">
-                                <c:out value="${classs.getClassName()}"/>
-                            </option>
-                        </c:forEach>
-                    </select>
-                </div>
-                <div class="select-container">
-                    <p>Trạng thái: </p>
-                    <select id="status" name="status" onchange="getStudentByClass()">
-                        <option value="%"></option>
-                        <option value="Thôi học">Thôi học</option>
-                        <option value="Đình chỉ">Đình chỉ</option>
-                        <option value="Chờ chuyển lớp">Chờ chuyển lớp</option>
-                        <option value="Đang học">Đang học</option>
-                    </select>
-                </div>
-            </caption>
+<div class="overlay"></div>
+<header class="header">
+    <h1>Teacher Dashboard</h1>
+    <a href="/logout" class="logout">Logout</a>
+</header>
+<div id="data">
+    <table id="table">
+        <caption>
+            <h2>Danh sách học viên</h2>
+            <div id="select-class-id">
+                <p>Lớp: </p>
+                <select id="classId" name="classId" onchange="getStudentByClass()">
+                    <option value=""></option>
+                    <c:forEach var="classs" items="${classesList}">
+                        <option value="${classs.getClassId()}">
+                            <c:out value="${classs.getClassName()}"/>
+                        </option>
+                    </c:forEach>
+                </select>
+            </div>
+        </caption>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th>Status</th>
+            <th>Date of birth</th>
+            <th>Address</th>
+        </tr>
+        <c:forEach var="student" items="${studentList}">
             <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone number</th>
-                <th>Status</th>
-                <th>Date of birth</th>
-                <th>Address</th>
+                <td><a href="/teacher/dashboard?action=edit&studentId=${student.getStudentId()}">
+                    <c:out value="${student.getFullName()}"/>
+                </a></td>
+                <td><c:out value="${student.getEmail()}"/></td>
+                <td><c:out value="${student.getPhoneNumber()}"/></td>
+                <td><c:out value="${student.getStatus().toString()}"/></td>
+                <td><c:out value="${student.getDateOfBirth()}"/></td>
+                <td><c:out value="${student.getAddress()}"/></td>
             </tr>
-            <c:forEach var="student" items="${studentList}">
-                <tr>
-                    <td><a href="/teacher/dashboard?action=edit&studentId=${student.getStudentId()}">
-                        <c:out value="${student.getFullName()}"/>
-                    </a></td>
-                    <td><c:out value="${student.getEmail()}"/></td>
-                    <td><c:out value="${student.getPhoneNumber()}"/></td>
-                    <td><c:out value="${student.getStatus().toString()}"/></td>
-                    <td><c:out value="${student.getDateOfBirth()}"/></td>
-                    <td><c:out value="${student.getAddress()}"/></td>
-                </tr>
-            </c:forEach>
-        </table>
-    </div>
-    <script>
-        let elementSelectClass = document.getElementById("classId");
-        let elementSelectStatus = document.getElementById("status")
+        </c:forEach>
+    </table>
+</div>
+<script>
+    let elementSelectClass = document.getElementById("classId");
 
-        function getStudentByClass() {
-            let classId = elementSelectClass.value;
-            let studentStatus = elementSelectStatus.value;
-            window.location.href = "/teacher/dashboard?classId=" + classId + "&status=" + studentStatus;
-        }
+    function getStudentByClass() {
+        let classId = elementSelectClass.value;
+        window.location.href = "/teacher/dashboard?classId=" + classId;
+    }
 
-        function setSelectClassOption() {
-            elementSelectClass.value = "<c:out value="${classId}"/>";
-            elementSelectStatus.value = "<c:out value="${status}"/>";
-        }
+    function setSelectClassOption() {
+        elementSelectClass.value = "<c:out value="${classId}"/>";
+    }
 
-        setSelectClassOption();
-    </script>
+    setSelectClassOption();
+</script>
 </body>
 </html>

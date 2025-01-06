@@ -6,7 +6,7 @@
 </head>
 <body>
     <h2>
-        <a href="teacher/dashboard">Quay lại danh sách</a>
+        <a href="/teacher/dashboard">Quay lại danh sách</a>
     </h2>
     <form method="post">
         <fieldset>

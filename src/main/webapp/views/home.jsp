@@ -8,6 +8,12 @@
     <title>Center Manager</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        body {
+            background-image: url('/views/img/background(1).jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
         .navbar {
             padding: 15px 0;
             background-color: #1a1a1a;
@@ -79,8 +85,8 @@
 
             <!-- Authentication Buttons -->
             <div class="d-flex align-items-center">
-                <a href="/views/login.jsp" class="nav-link">Đăng nhập</a>
-                <a href="/views/register.jsp" class="btn btn-register ms-3">Đăng ký ngay</a>
+                <a href="/login" class="nav-link">Đăng nhập</a>
+                <a href="/register" class="btn btn-register ms-3">Đăng ký ngay</a>
 
                 <!-- Language Selector -->
                 <select class="language-select ms-3">
