@@ -150,4 +150,44 @@ p {
     .content-container {
         width: 90%;
     }
+    /* Styles for Class List Table */
+    .class-list-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        table-layout: fixed; /* Đảm bảo các cột có độ rộng cân đối */
+        background-color: rgba(255, 255, 255, 0.05); /* Màu nền nhẹ */
+        border-radius: 10px;
+    }
+
+    .class-list-table th, .class-list-table td {
+        padding: 12px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.2); /* Đường viền nhạt */
+        color: #fff;
+        word-wrap: break-word; /* Chia dòng nếu nội dung quá dài */
+    }
+
+    /* Header Row Styles */
+    .class-list-table th {
+        background-color: rgba(63, 94, 251, 0.8); /* Nền đậm cho tiêu đề */
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 1em;
+    }
+
+    /* Zebra Striping */
+    .class-list-table tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.1); /* Màu nền cho hàng chẵn */
+    }
+
+    .class-list-table tr:nth-child(odd) {
+        background-color: rgba(255, 255, 255, 0.05); /* Màu nền cho hàng lẻ */
+    }
+
+    /* Hover Effect */
+    .class-list-table tr:hover {
+        background-color: rgba(63, 94, 251, 0.2); /* Màu nền khi hover */
+        transition: background-color 0.3s ease-in-out;
+    }
 }

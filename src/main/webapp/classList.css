@@ -1,0 +1,114 @@
+/* General Styles for Body */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Header Section */
+header {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.back-button {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 10px 20px;
+    background: linear-gradient(to right, rgba(63,94,251,1), rgba(252,70,107,1));
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Main Content Section */
+.content-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 70%;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Styles for Class List Table */
+.class-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed; /* Đảm bảo các cột có độ rộng cân đối */
+    background-color: rgba(255, 255, 255, 0.05); /* Màu nền nhẹ */
+    border-radius: 10px;
+    overflow: hidden; /* Đảm bảo góc bo tròn */
+}
+
+.class-list-table th, .class-list-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Đường viền nhạt */
+    color: #fff;
+    word-wrap: break-word; /* Chia dòng nếu nội dung quá dài */
+}
+
+/* Header Row Styles */
+.class-list-table th {
+    background-color: rgba(63, 94, 251, 0.8); /* Nền đậm cho tiêu đề */
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1em;
+}
+
+/* Zebra Striping */
+.class-list-table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1); /* Màu nền cho hàng chẵn */
+}
+
+.class-list-table tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.05); /* Màu nền cho hàng lẻ */
+}
+
+/* Hover Effect */
+.class-list-table tr:hover {
+    background-color: rgba(63, 94, 251, 0.2); /* Màu nền khi hover */
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* View Link */
+.view-link {
+    color: #63d1ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.view-link:hover {
+    text-decoration: underline;
+    color: #fff;
+}

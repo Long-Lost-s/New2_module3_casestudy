@@ -17,7 +17,7 @@
 <main>
     <div class="content-container">
         <h2>Class List</h2>
-        <table>
+        <table class="class-list-table">
             <thead>
             <tr>
                 <th>Class ID</th>
@@ -33,15 +33,12 @@
                     <td>${cls.className}</td>
                     <td>${cls.teacherID}</td>
                     <td>
-                            <%--            <a href="/admin/classes?action=edit&id=${cls.classId}">Edit</a>--%>
-                            <%--            <a href="/admin/classes?action=delete&id=${cls.classId}" onclick="return confirm('Are you sure you want to delete this class?');">Delete</a>--%>
-                        <a href="/admin/classes?action=listStudents&classId=${cls.classId}">View Students</a>
+                        <a href="/admin/classes?action=listStudents&classId=${cls.classId}" class="view-link">View Students</a>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
-        <%--    <a href="/admin/classes?action=add" class="add-button">Add New Class</a>--%>
     </div>
 </main>
 </body>
