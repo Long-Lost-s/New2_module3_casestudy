@@ -3,6 +3,7 @@ package org.example.schoolmanagement.model;
 public class Classes {
     private int classId;
     private String className;
+<<<<<<< HEAD
     private int teacherId;
 
     public Classes(int classId, String className, int teacherId) {
@@ -11,6 +12,11 @@ public class Classes {
         this.teacherId = teacherId;
     }
 
+=======
+    private int teacherID;
+
+    // Getters and setters
+>>>>>>> 579e11e9e99cf35bd66e7da29a44e687175e2e83
     public int getClassId() {
         return classId;
     }
@@ -27,6 +33,7 @@ public class Classes {
         this.className = className;
     }
 
+<<<<<<< HEAD
     public int getTeacherId() {
         return teacherId;
     }
@@ -35,3 +42,13 @@ public class Classes {
         this.teacherId = teacherId;
     }
 }
+=======
+    public int getTeacherID() {
+        return teacherID;
+    }
+
+    public void setTeacherID(int teacherID) {
+        this.teacherID = teacherID;
+    }
+}
+>>>>>>> 579e11e9e99cf35bd66e7da29a44e687175e2e83

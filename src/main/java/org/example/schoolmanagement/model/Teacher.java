@@ -5,22 +5,21 @@ public class Teacher {
     private String fullName;
     private String email;
     private String phoneNumber;
-    private int totalClasses;
     private int totalStudents;
 
-    // Constructors
-    public Teacher() {}
+    // Default constructor
+    public Teacher() {
+    }
 
-    public Teacher(int teacherId, String fullName, String email, String phoneNumber, int totalClasses, int totalStudents) {
+    // Constructor with parameters
+    public Teacher(int teacherId, String fullName, String email, String phoneNumber) {
         this.teacherId = teacherId;
         this.fullName = fullName;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.totalClasses = totalClasses;
-        this.totalStudents = totalStudents;
     }
 
-    // Getters and Setters
+    // Getters and setters
     public int getTeacherId() {
         return teacherId;
     }
@@ -51,14 +50,6 @@ public class Teacher {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public int getTotalClasses() {
-        return totalClasses;
-    }
-
-    public void setTotalClasses(int totalClasses) {
-        this.totalClasses = totalClasses;
     }
 
     public int getTotalStudents() {

@@ -3,6 +3,57 @@
 <html>
 <head>
     <title>Sửa điểm học viên</title>
+<<<<<<< HEAD
+=======
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        h2 a:hover {
+            text-decoration: underline;
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        fieldset {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        legend {
+            font-weight: bold;
+        }
+        p {
+            margin: 10px 0;
+        }
+        select, input[type="submit"] {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+>>>>>>> 579e11e9e99cf35bd66e7da29a44e687175e2e83
 </head>
 <body>
     <h2>

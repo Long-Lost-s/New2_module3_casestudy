@@ -1,6 +1,11 @@
 package org.example.schoolmanagement.model;
 
 import java.time.LocalDate;
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+import java.util.List;
+>>>>>>> 579e11e9e99cf35bd66e7da29a44e687175e2e83
 
 public class Student {
     private int studentId;
@@ -11,11 +16,21 @@ public class Student {
     private LocalDate dateOfBirth;
     private String address;
     private int classId;
+<<<<<<< HEAD
 
     public Student(int studentId, String fullName,
                    String email, String phoneNumber,
                    StudentStatus status, LocalDate dateOfBirth,
                    String address, int classId) {
+=======
+    private List<Score> scores;
+
+    public Student() {
+        scores = new ArrayList<>();
+    }
+
+    public Student(int studentId, String fullName, String email, String phoneNumber, StudentStatus status, LocalDate dateOfBirth, String address, int classId) {
+>>>>>>> 579e11e9e99cf35bd66e7da29a44e687175e2e83
         this.studentId = studentId;
         this.fullName = fullName;
         this.email = email;
@@ -24,6 +39,10 @@ public class Student {
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.classId = classId;
+<<<<<<< HEAD
+=======
+        this.scores = new ArrayList<>();
+>>>>>>> 579e11e9e99cf35bd66e7da29a44e687175e2e83
     }
 
     public int getStudentId() {
@@ -90,6 +109,17 @@ public class Student {
         this.classId = classId;
     }
 
+<<<<<<< HEAD
+=======
+    public List<Score> getScores() {
+        return scores;
+    }
+
+    public void addScore(Score score) {
+        scores.add(score);
+    }
+
+>>>>>>> 579e11e9e99cf35bd66e7da29a44e687175e2e83
     @Override
     public String toString() {
         return "Student{" +
@@ -101,6 +131,13 @@ public class Student {
                 ", dateOfBirth=" + dateOfBirth +
                 ", address='" + address + '\'' +
                 ", classId=" + classId +
+<<<<<<< HEAD
                 '}';
     }
 }
+=======
+                ", scores=" + scores +
+                '}';
+    }
+}
+>>>>>>> 579e11e9e99cf35bd66e7da29a44e687175e2e83
