@@ -24,7 +24,7 @@ public class StudentDAO {
             "Status = ? WHERE StudentId = ?;";
     private final String DELETE_STUDENT = "DELETE FROM students WHERE StudentId = ?;";
     private final String SELECT_STUDENT_BY_ID = "SELECT * FROM students WHERE StudentId = ?";
-    private final String SELECT_STUDENTS_BY_CLASS_ID = "SELECT * FROM students WHERE ClassId = ?";
+    private final String SELECT_STUDENTS_BY_CLASS_ID_AND_STATUS = "SELECT * FROM students WHERE ClassId LIKE ? AND Status LIKE ?";
     private final String SELECT_STUDENTS_BY_SUBJECT_ID = "SELECT students.FullName, " +
             "students.ClassId, scores.TheoryScore, " +
             "scores.PracticeScore, scores.average_score " +
@@ -94,11 +94,12 @@ public class StudentDAO {
         return student;
     }
 
-    public List<Student> selectStudentsByClass(int id) {
+    public List<Student> selectStudentsByClass(String id, String status) {
         List<Student> students = new ArrayList<>();
         try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_STUDENTS_BY_CLASS_ID);) {
-            preparedStatement.setInt(1, id);
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_STUDENTS_BY_CLASS_ID_AND_STATUS);) {
+            preparedStatement.setString(1, id);
+            preparedStatement.setString(2, status);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -106,11 +107,11 @@ public class StudentDAO {
                 String fullName = rs.getString("FullName");
                 String email = rs.getString("Email");
                 String phoneNumber = rs.getString("PhoneNumber");
-                StudentStatus status = StudentStatus.fromString(rs.getString("Status"));
+                StudentStatus studentStatus = StudentStatus.fromString(rs.getString("Status"));
                 LocalDate dateOfBirth = rs.getDate("DateOfBirth").toLocalDate();
                 String address = rs.getString("Address");
                 int classId = rs.getInt("ClassId");
-                Student student = new Student(studentId,fullName,email,phoneNumber,status,dateOfBirth,address,classId);
+                Student student = new Student(studentId,fullName,email,phoneNumber,studentStatus,dateOfBirth,address,classId);
                 students.add(student);
             }
         } catch (SQLException e) {
