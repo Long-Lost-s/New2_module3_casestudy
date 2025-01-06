@@ -7,45 +7,42 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container mt-5">
-  <header class="bg-primary text-white p-3 mb-3">
-    <div class="d-flex justify-content-between align-items-center">
-      <h1>Monthly Teacher Report</h1>
-      <a href="/views/admin/admin_dashboard.jsp" class="btn btn-danger">Back to Dashboard</a>
-    </div>
-  </header>
+<div class="container mt-4">
+  <h1 class="text-center mb-4">Monthly Teacher Report</h1>
 
-  <main>
-    <c:if test="${param.success != null}">
-      <div class="alert alert-success">${param.success}</div>
-    </c:if>
-    <c:if test="${param.error != null}">
-      <div class="alert alert-danger">${param.error}</div>
-    </c:if>
+  <p><a href="/views/admin/admin_dashboard.jsp" class="btn btn-secondary">Back to Dashboard</a></p>
 
-    <table class="table table-bordered table-striped">
-      <thead class="thead-light">
+  <!-- Success or error message -->
+  <c:if test="${param.success != null}">
+    <div class="alert alert-success">${param.success}</div>
+  </c:if>
+  <c:if test="${param.error != null}">
+    <div class="alert alert-danger">${param.error}</div>
+  </c:if>
+
+  <!-- Table displaying the monthly teacher reports -->
+  <table class="table table-striped table-hover text-center">
+    <thead class="thead-light">
+    <tr>
+      <th>Teacher ID</th>
+      <th>Full Name</th>
+      <th>Total Classes</th>
+      <th>Total Students</th>
+      <th>Report Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="report" items="${reports}">
       <tr>
-        <th>Teacher ID</th>
-        <th>Full Name</th>
-        <th>Total Classes</th>
-        <th>Total Students</th>
-        <th>Report Date</th>
+        <td>${report.teacherId}</td>
+        <td>${report.fullName}</td>
+        <td>${report.totalClasses}</td>
+        <td>${report.totalStudents}</td>
+        <td>${report.reportDate}</td>
       </tr>
-      </thead>
-      <tbody>
-      <c:forEach var="report" items="${reports}">
-        <tr>
-          <td>${report.teacherId}</td>
-          <td>${report.fullName}</td>
-          <td>${report.totalClasses}</td>
-          <td>${report.totalStudents}</td>
-          <td>${report.reportDate}</td>
-        </tr>
-      </c:forEach>
-      </tbody>
-    </table>
-  </main>
+    </c:forEach>
+    </tbody>
+  </table>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

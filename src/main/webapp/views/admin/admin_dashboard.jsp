@@ -12,6 +12,10 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
     }
+    .highlight {
+      font-weight: bold;
+      color: #ff5722;
+    }
   </style>
 </head>
 <body>
@@ -24,16 +28,29 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item"><a class="nav-link" href="/admin/teachers">Manage Teachers</a></li>
-      <li class="nav-item"><a class="nav-link" href="/admin/classes?action=list">Manage Classes</a></li>
-      <li class="nav-item"><a class="nav-link" href="/admin/subjects">Manage Subjects</a></li>
-      <li class="nav-item"><a class="nav-link" href="/admin/monthly_teacher_report">Monthly Teacher Reports</a></li>
-    </ul>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link highlight" href="/admin/teachers">Manage Teachers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link highlight" href="/admin/classes?action=list">Manage Classes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link highlight" href="/admin/subjects">Manage Subjects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/admin/monthly_teacher_report">Monthly Teacher Reports</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
 
-<main class="container mt-3">
+<main class="container mt-4">
   <div class="content-container">
     <p>Select an option from the menu above to manage the system.</p>
 

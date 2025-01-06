@@ -7,41 +7,65 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container">
-    <h1 class="mt-4">Teachers List</h1>
+
+<style>
+    .btn-custom1 {
+        background-color: #007bff; /* Change to your desired color */
+        color: white;
+    }
+    .btn-custom2 {
+        background-color: #28a745; /* Change to your desired color */
+        color: white;
+    }
+
+    .div_footer {
+        margin: 20px 0;
+    }
+
+    .hh {
+        background: #4cae4c;
+        width: 100%;
+        color: #fff;
+    }
+</style>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4 hh">Teachers List</h1>
 
     <!-- Form for adding a new teacher -->
-    <h2 class="mt-4">Add Teacher</h2>
-    <form action="/admin/teachers?action=add" method="post" accept-charset="UTF-8" class="mb-4">
-        <div class="form-group">
-            <label for="addFullName">Full Name:</label>
-            <input type="text" class="form-control" id="addFullName" name="fullName" required>
+    <h2 class="text-center mb-4">Add Teacher</h2>
+    <form action="/admin/teachers?action=add" method="post" accept-charset="UTF-8" class="mb-5">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="addFullName">Full Name:</label>
+                <input type="text" class="form-control" id="addFullName" name="fullName" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="addEmail">Email:</label>
+                <input type="email" class="form-control" id="addEmail" name="email" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="addPhoneNumber">Phone Number:</label>
+                <input type="text" class="form-control" id="addPhoneNumber" name="phoneNumber" required>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="addEmail">Email:</label>
-            <input type="email" class="form-control" id="addEmail" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="addPhoneNumber">Phone Number:</label>
-            <input type="text" class="form-control" id="addPhoneNumber" name="phoneNumber" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Add Teacher</button>
+        <button type="submit" class="btn btn-primary btn-block">Add Teacher</button>
     </form>
 
     <!-- Form for searching teachers -->
-    <h2 class="mt-4">Search Teacher</h2>
-    <form action="/admin/teachers" method="get" class="mb-4">
+    <h2 class="text-center mb-4">Search Teacher</h2>
+    <form action="/admin/teachers" method="get" class="mb-5">
         <input type="hidden" name="action" value="search">
         <div class="form-group">
             <label for="searchName">Name:</label>
             <input type="text" class="form-control" id="searchName" name="name" placeholder="Enter teacher name">
         </div>
-        <button type="submit" class="btn btn-primary">Search</button>
+        <button type="submit" class="btn btn-primary btn-block">Search</button>
     </form>
 
     <!-- Table displaying the list of teachers -->
-    <h2 class="mt-4">Teachers List</h2>
-    <table class="table table-bordered">
+    <h2 class="text-center mb-4">Teachers List</h2>
+    <table class="table table-bordered text-center">
         <thead class="thead-dark">
         <tr>
             <th>Teacher ID</th>
@@ -72,8 +96,8 @@
 
     <!-- Form for editing a teacher (only visible when editing) -->
     <c:if test="${not empty teacher}">
-        <h2 class="mt-4">Edit Teacher</h2>
-        <form action="/admin/teachers?action=edit" method="post" accept-charset="UTF-8" class="mb-4">
+        <h2 class="text-center mb-4">Edit Teacher</h2>
+        <form action="/admin/teachers?action=edit" method="post" accept-charset="UTF-8" class="mb-5">
             <input type="hidden" name="teacherId" value="${teacher.teacherId}">
             <div class="form-group">
                 <label for="editFullName">Full Name:</label>
@@ -87,13 +111,13 @@
                 <label for="editPhoneNumber">Phone Number:</label>
                 <input type="text" class="form-control" id="editPhoneNumber" name="phoneNumber" value="${teacher.phoneNumber}" required>
             </div>
-            <button type="submit" class="btn btn-primary">Update Teacher</button>
+            <button type="submit" class="btn btn-primary btn-block">Update Teacher</button>
         </form>
     </c:if>
 
-    <div class="btn-group mt-4" role="group">
-        <a href="/admin/teachers?action=averageScores" class="btn btn-secondary">View Class Average Scores</a>
-        <a href="/admin/teachers?action=viewStudentScores" class="btn btn-secondary">View Student Average Scores</a>
+    <div class="div_footer btn-group mt-4 d-flex justify-content-center" role="group">
+        <a href="/admin/teachers?action=averageScores" class="btn btn-custom1 mx-2">View Class Average Scores</a>
+        <a href="/admin/teachers?action=viewStudentScores" class="btn btn-custom2 mx-2">View Student Average Scores</a>
     </div>
 </div>
 
