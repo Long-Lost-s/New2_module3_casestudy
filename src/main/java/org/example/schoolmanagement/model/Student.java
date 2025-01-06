@@ -1,13 +1,33 @@
 package org.example.schoolmanagement.model;
 
+import java.time.LocalDate;
+
 public class Student {
     private int studentId;
     private String fullName;
     private String email;
     private String phoneNumber;
-    private String status;
+    private StudentStatus status;
+    private LocalDate dateOfBirth;
+    private String address;
+    private int classId;
 
-    // Getters and Setters
+    public Student() {}
+
+    public Student(int studentId, String fullName,
+                   String email, String phoneNumber,
+                   StudentStatus status, LocalDate dateOfBirth,
+                   String address, int classId) {
+        this.studentId = studentId;
+        this.fullName = fullName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.status = status;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.classId = classId;
+    }
+
     public int getStudentId() {
         return studentId;
     }
@@ -40,11 +60,49 @@ public class Student {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getStatus() {
+    public StudentStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(StudentStatus status) {
         this.status = status;
+    }
+
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getClassId() {
+        return classId;
+    }
+
+    public void setClassId(int classId) {
+        this.classId = classId;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId=" + studentId +
+                ", fullName='" + fullName + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", status=" + status +
+                ", dateOfBirth=" + dateOfBirth +
+                ", address='" + address + '\'' +
+                ", classId=" + classId +
+                '}';
     }
 }
